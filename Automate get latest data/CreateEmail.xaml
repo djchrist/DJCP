@@ -1,0 +1,184 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CreateEmail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="stockDeviate" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="receiverEmail" Type="InArgument(x:String)" />
+    <x:Property Name="email" Type="InArgument(x:String)" />
+    <x:Property Name="pwd" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>583,663</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CreateEmail_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CreateEmail" sap:VirtualizedContainerService.HintSize="563,563" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="emailBody" />
+      <Variable x:TypeArguments="x:String" Name="ColumnName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If sap2010:Annotation.AnnotationText="If any stock breach will send email" Condition="[stockDeviate.Rows.Count()&gt;0]" DisplayName="If deviates row more than 0" sap:VirtualizedContainerService.HintSize="521,471" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,293" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Sequence Email" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:WriteTextFile sap2010:Annotation.AnnotationText="Define header of email" DisplayName="Write Text File" Encoding="{x:Null}" FileName="FIle\Template.txt" sap:VirtualizedContainerService.HintSize="426,162" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;table {font-family: arial, sans-serif;border-collapse: collapse;width: 100%;}p{font-family: arial, sans-serif;border-collapse: collapse;width: 100%;}td, th {border: 1px solid #dddddd;text-align: left;padding: 8px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Hi User &lt;br/&gt; &lt;br/&gt; The stocks on the file have breach the threshold please find in table below.&lt;br/&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Ticker&lt;/th&gt;&lt;th&gt;Company&lt;/th&gt;&lt;th&gt;Stock Exchange&lt;/th&gt;&lt;th&gt;BuyPrice&lt;/th&gt;&lt;th&gt;Last Price&lt;/th&gt; &lt;th&gt;Threshold&lt;/th&gt;&lt;/tr&gt;">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:WriteTextFile>
+            <Assign DisplayName="Assign ColumnName" sap:VirtualizedContainerService.HintSize="426,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[ColumnName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Today.ToShortDateString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[stockDeviate]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="426,531" sap2010:WorkflowViewState.IdRef="ForEachRow_2" Values="{x:Null}">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,382" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="threshold" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap2010:Annotation.AnnotationText="assign the threshold in percentage" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="Assign_5">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[threshold]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[FormatPercent(((CInt(row.Item(ColumnName).ToString)-CInt(row.Item("Buy Price").ToString))/CInt(row.Item("Buy Price").ToString)))]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <ui:AppendLine sap2010:Annotation.AnnotationText="append threshold data to email table" DisplayName="Append Line UserData" Encoding="{x:Null}" FileName="FIle\Template.txt" sap:VirtualizedContainerService.HintSize="334,162" sap2010:WorkflowViewState.IdRef="AppendLine_3" Text="[&quot;&lt;tr&gt;&lt;td&gt;&quot;+row.Item(&quot;Ticker&quot;).ToString+&quot;&lt;/td&gt;&lt;td&gt;&quot;+row.Item(&quot;Company&quot;).ToString+&quot;&lt;/td&gt;&lt;td&gt;&quot;+row.Item(&quot;Stock Exchange&quot;).ToString+&quot;&lt;/td&gt;&lt;td&gt;&quot;+row.Item(&quot;Buy Price&quot;).ToString+&quot;&lt;/td&gt;&lt;td&gt;&quot;+row.Item(ColumnName).ToString+&quot;&lt;/td&gt;&lt;td&gt;&quot;+threshold+&quot;&lt;/td&gt;&lt;/tr&gt;&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:AppendLine>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <ui:AppendLine sap2010:Annotation.AnnotationText="define footer email" DisplayName="Append Line" Encoding="{x:Null}" FileName="FIle\Template.txt" sap:VirtualizedContainerService.HintSize="426,162" sap2010:WorkflowViewState.IdRef="AppendLine_4" Text="&lt;/table&gt;&lt;br/&gt;NB: This Email Generated by system cannot be replied&lt;br/&gt; &lt;br/&gt; Thank you &lt;br/&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:AppendLine>
+            <ui:ReadTextFile sap2010:Annotation.AnnotationText="convert text file to string" Content="[emailBody]" DisplayName="Read Text File" Encoding="{x:Null}" FileName="FIle\Template.txt" sap:VirtualizedContainerService.HintSize="426,162" sap2010:WorkflowViewState.IdRef="ReadTextFile_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ReadTextFile>
+            <ui:SendMail sap2010:Annotation.AnnotationText="Please key default email , ReceiverEmail" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Body="[emailBody]" Cc="{x:Null}" DisplayName="Send SMTP Mail Message" Email="tondjrp@gmail.com" EnableSSL="True" From="{x:Null}" sap:VirtualizedContainerService.HintSize="426,175" sap2010:WorkflowViewState.IdRef="SendMail_3" IsBodyHtml="True" MailMessage="{x:Null}" Name="{x:Null}" Password="Djoko@1989" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Stock breach your threshold" TimeoutMS="{x:Null}" To="[receiverEmail]">
+              <ui:SendMail.Files>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">File\IDX_Pick.xlsx</InArgument>
+                </scg:List>
+              </ui:SendMail.Files>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:SendMail>
+            <ui:Delete sap2010:Annotation.AnnotationText="Delete the temporary template" ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="426,66" sap2010:WorkflowViewState.IdRef="Delete_2" Path="FIle\Template.txt">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:Delete>
+          </Sequence>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;End of workflow&quot;]" />
+        </Sequence>
+      </If.Then>
+    </If>
+  </Sequence>
+</Activity>
